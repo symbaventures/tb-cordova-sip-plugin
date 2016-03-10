@@ -20,7 +20,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="cordova-plugin-tbsip"
-    version="0.0.4">
+    version="0.0.5">
     <name>TBSIP</name>
     <description>Cordova SIP Plugin</description>
     <license>Apache 2.0</license>
@@ -43,7 +43,7 @@
         <hook type="before_plugin_uninstall" src="hooks/BeforePluginUninstall.js" />
 
         <header-file src="src/ios/TBSIPPlugin.h" />
-        <source-file src="src/ios/TBSIPPlugin.m" compiler-flags="-Isrc/ios/third_party/pjsip/include/"/>
+        <source-file src="src/ios/TBSIPPlugin.m" compiler-flags="-Isrc/ios/third_party/pjsip/pjsip/"/>
 
         <!--pjsip-->
         <source-file src="src/ios/third_party/pjsip/lib/libpj.a" framework="true" />
@@ -78,7 +78,6 @@
 
         <!--Headers-->
         <framework src="src/ios/third_party/pjsip/pjsip" custom="true" />
-        <framework src="src/ios/third_party/pjsip/pjsip/pjsua-lib" custom="true" />
         <framework src="src/ios/third_party/pjsip/openh264/openh264" custom="true" />
 
         <!--System libs and frameworks-->
