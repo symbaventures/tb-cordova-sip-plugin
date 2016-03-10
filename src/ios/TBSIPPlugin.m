@@ -7,7 +7,7 @@
 //
 
 #import "TBSIPPlugin.h"
-#import <pjsua-lib/pjsua.h>
+#import <pjsua.h>
 #import <AVFoundation/AVFoundation.h>
 
 @interface TBSIPPlugin()
