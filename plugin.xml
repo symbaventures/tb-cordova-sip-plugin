@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-tbsip"
+    version="0.0.1-dev">
+    <name>TBSIP</name>
+    <description>Cordova SIP Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,ios,sip</keywords>
+
+    <js-module src="www/TBSIPPlugin.js" name="TBSIPPlugin">
+        <clobbers target="TBSIPPlugin" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="TBSIPPlugin">
+                <param name="ios-package" value="TBSIPPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <hook type="after_plugin_install" src="hooks/AfterPluginInstall.js" />
+        <hook type="before_plugin_uninstall" src="hooks/BeforePluginUninstall.js" />
+
+        <header-file src="src/ios/TBSIPPlugin.h" />
+        <source-file src="src/ios/TBSIPPlugin.m" compiler-flags="-Isrc/ios/third_party/pjsip/include/"/>
+
+        <!--pjsip-->
+        <source-file src="src/ios/third_party/pjsip/lib/libpj.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjlib-util.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjmedia-audiodev.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjmedia-codec.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjmedia-videodev.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjmedia.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjnath.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjsdp.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjsip-simple.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjsip-ua.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjsip.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjsua.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/lib/libpjsua2.a" framework="true" />
+
+        <!--pjsip third parties libs-->
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libg7221codec.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libgsmcodec.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libilbccodec.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libmilenage.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libresample.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libspeex.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/third_party/lib/libsrtp.a" framework="true" />
+
+        <!--openh264 libs-->
+        <source-file src="src/ios/third_party/pjsip/openh264/lib/libcommon.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/openh264/lib/libdecoder.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/openh264/lib/libencoder.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/openh264/lib/libopenh264.a" framework="true" />
+        <source-file src="src/ios/third_party/pjsip/openh264/lib/libprocessing.a" framework="true" />
+
+        <!--Headers-->
+        <framework src="src/ios/third_party/pjsip/pjsip" custom="true" />
+        <framework src="src/ios/third_party/pjsip/openh264/openh264" custom="true" />
+
+        <!--System libs and frameworks-->
+        <framework src="CoreAudio.framework" />
+        <framework src="AudioToolbox.framework" />
+        <framework src="CoreImage.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreMedia.framework" />
+        <framework src="AVFoundation.framework" />
+        <!-- Note these one appear in red in app code project but work-->
+        <framework src="libstdc++.dylib" />
+
+    </platform>
+
+</plugin>
